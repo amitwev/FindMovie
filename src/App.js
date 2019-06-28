@@ -1,25 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'tachyons'; 
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return ( 
+      <div className='tc'> 
+        <h1 className='f1 title'>Find a movie app</h1> 
+        <input type="text" className='br4 tc searchBar' 
+                placeholder='search movie'/>
+      </div>
   );
 }
 
