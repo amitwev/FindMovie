@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-const Search = ({searchChange}) => {
+const SearchBox = ({searchChange}) => {
 	return (
 			<div>
 				<input type="text" 
@@ -13,4 +13,4 @@ const Search = ({searchChange}) => {
 	);
 }
 
-export default Search; 
+export default SearchBox; 

@@ -1,29 +1,20 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import './movie.css';
 const Movie = (props) => {
-	const {searchField, key} = props.movie;
-	const moviesResult = null;
-	if(key === 'Enter'){
-  		const moviesResult = fetchingData(searchField);
-		console.log(moviesResult);
-		return (
-			<div>
-				<h1>Results for: {searchField}</h1>
-			</div>
+	console.log('in single movie', props);
+	const {key,id,name,type,photo,rank, description} = props;
+	return (
+		<div className='w-two-thirds center'>
+			<article class="shadow-3 bg-near-white fl w-50 ma1 center singleMovie">
+				<img alt ='movie' src={`http://image.tmdb.org/t/p/w185/${photo}`} className=''/>
+				<div id = {id} className = 'fl w-50 pa5'>
+					<p className='f5 f4-ns mv0 '>Movie name: {name}</p>
+					<p className=''>Type: {type}</p>
+					<p className=''>Rank: {rank}</p>
+				</div>
+			</article>
+		</div>
 	)
-	}else{
-		return (
-			<div>
-				<h1>Please search For a movie...</h1>
-			</div>
-	)
-	}
-	
-}
-const fetchingData = async function f1(value) { 
-	const url = await fetch(`https://api.themoviedb.org/3/search/company?api_key=139d66712ddc61478b65565b75a48660&query=${value}&page=1`);
-  	const data = url.json();
-  	return data; 
-}
 
+}
 export default Movie;
