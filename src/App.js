@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'tachyons'; 
 import SearchBox from './component/SearchBox';
-import AllMovies from './component/allMovies';
+import AllMovies from './component/AllMovies';
 import Header from './component/Header';
 import Particles from 'react-particles-js';
 import particlesConfig from './particlesjs-config.json';
@@ -14,7 +14,8 @@ class App extends Component {
       movies:[],
 			searchField: '', 
       key:null, 
-      numOfpages:null
+      numOfpages:null, 
+      totalResult:null
 		}
 	}
     onSearchChanges = (event) => {
@@ -26,12 +27,6 @@ class App extends Component {
           theState.searchField = search;
           theState.key = keyPress;
           this.gettingData();
-      }else{
-        return(
-          <div>
-            {'Looking for search'};
-          </div>
-        )
       }
 	}
   gettingData = async function(){
@@ -39,10 +34,9 @@ class App extends Component {
       const valueForSearch = this.state.searchField;
       if(valueForSearch.length > 0 ){
         const url = await (`https://api.themoviedb.org/3/search/multi?api_key=139d66712ddc61478b65565b75a48660&language=en-US&query=${valueForSearch}&page=1&include_adult=true`);
-        await console.log(url);
         const response = await fetch(url);
         const data = await response.json();
-        await this.setState({movies: data.results, numOfpages: data.total_pages })
+        await this.setState({movies: data.results, numOfpages: data.total_pages, totalResult:data.total_results})
       }
     }catch(e){
       console.log('Error:', e);
@@ -54,7 +48,7 @@ class App extends Component {
         <Particles className ='particles' params={particlesConfig} />
 		    <Header /> 
 		    <SearchBox searchChange={this.onSearchChanges}/>
-        <AllMovies allMovies={this.state} />
+        <AllMovies AllMovies={this.state} />
 		  </div>
 		);
 	}
