@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
-import 'tachyons'; 
-import SearchBox from './component/SearchBox';
-import AllMovies from './component/allMovies';
-import Header from './component/Header';
+import Main from './component/Main/Main';
 import Particles from 'react-particles-js';
 import particlesConfig from './particlesjs-config.json';
+import Signin from './component/SignIn/Signin';
+
 
 class App extends Component {
 	constructor(){
@@ -44,12 +44,17 @@ class App extends Component {
   }
   render(){
 		return (
-		  <div className='tc'> 
-        <Particles className ='particles' params={particlesConfig} />
-		    <Header /> 
-		    <SearchBox searchChange={this.onSearchChanges}/>
-        <AllMovies AllMovies={this.state} />
-		  </div>
+      <BrowserRouter>
+  		  <div className='tc'> 
+          <Particles className ='particles' params={particlesConfig} />
+          <Route exact path='/' component={Signin} />
+  		    <Route path='/main' 
+                 component={Main} 
+                 passState={this.state} 
+                 searchChange={this.onSearchChanges}
+          />
+  		  </div>
+      </BrowserRouter>
 		);
 	}
 }

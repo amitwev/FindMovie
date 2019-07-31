@@ -1,6 +1,7 @@
 import React from 'react';
-import Movie from './Movie'
+import Movie from '../Movie/Movie'
 const AllMovies = (props) =>{
+	console.log(props);
 	const allMoviesData = props.AllMovies.movies;
 	const numOfResults = props.AllMovies.totalResult;
 	const searchField = props.AllMovies.searchField;
