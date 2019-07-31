@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'tachyons'; 
 import SearchBox from './component/SearchBox';
-import AllMovies from './component/AllMovies';
+import AllMovies from './component/allMovies';
 import Header from './component/Header';
 import Particles from 'react-particles-js';
 import particlesConfig from './particlesjs-config.json';
